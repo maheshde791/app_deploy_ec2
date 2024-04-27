@@ -35,6 +35,14 @@ resource "aws_security_group" "jenkins-sg" {
   description = "Allow inbound ports 80, 443"
   vpc_id      = "vpc-015db53bcb2d8c508"
 
+  #Allow incoming TCP requests on port 22 from any IP
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   #Allow incoming TCP requests on port 80 from any IP
   ingress {
     from_port   = 80
