@@ -19,3 +19,6 @@ backup_folder="$HOME/backup"
 sudo mv "$backup_file" "$backup_folder"
 
 echo "Backup created and moved to: $backup_folder"
+
+# 6. Removing 30 days old files based on modification time
+find "$backup_folder" -type f -iname '*.zip' -mtime +30 -delete
